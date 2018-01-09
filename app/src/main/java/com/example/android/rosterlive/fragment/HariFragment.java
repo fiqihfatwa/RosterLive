@@ -6,23 +6,19 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.android.rosterlive.R;
 import com.example.android.rosterlive.adapters.JadwalAdapter;
 import com.example.android.rosterlive.helper.SQLiteHandler;
 import com.example.android.rosterlive.models.Jadwal;
 import com.example.android.rosterlive.response.JadwalHarianResponse;
-import com.example.android.rosterlive.response.JadwalResponse;
 import com.example.android.rosterlive.service.JadwalService;
 import com.example.android.rosterlive.utilities.SessionManager;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -176,7 +172,8 @@ public class HariFragment extends Fragment {
             @Override
             public void onFailure(Call<List<JadwalHarianResponse>> call, Throwable t) {
                 //Log.d("HariFragment",t.toString());
-                Toast.makeText(view.getContext(),"No Connection", Toast.LENGTH_SHORT).show();
+                rvJadwalHarian.setVisibility(View.GONE);
+                tvStatusHari.setText("Tidak dapat terhubung");
                 swipeRefreshJadwal.setRefreshing(false);
             }
         });
