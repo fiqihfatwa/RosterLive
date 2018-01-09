@@ -17,7 +17,7 @@ import retrofit2.http.POST;
  */
 
 public interface JadwalService {
-    public String baseUrl = "http://192.168.1.101/rosterlive/";
+    public String baseUrl = "http://192.168.1.101/rosterlive/ ";
 
     @GET("api.php")
     Call<List<JadwalResponse>> listJadwal();

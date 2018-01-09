@@ -1,18 +1,21 @@
 package com.example.android.rosterlive;
 
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.FrameLayout;
 
 import com.example.android.rosterlive.fragment.HomeFragment;
 import com.example.android.rosterlive.fragment.MingguanFragment;
 import com.example.android.rosterlive.fragment.ProfileFragment;
+import com.example.android.rosterlive.helper.SQLiteHandler;
+import com.example.android.rosterlive.utilities.SessionManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,7 +27,10 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-
+    @BindView(R.id.bottom_tab_layout)
+    TabLayout bottomTabLayout;
+    private SQLiteHandler db;
+    private SessionManager session;
     // configure icons
     private int[] imageResId = {
             R.drawable.ic_home_black_24dp,
@@ -32,15 +38,22 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.ic_person_black_24dp
     };
 
-    @BindView(R.id.bottom_tab_layout)
-    TabLayout bottomTabLayout;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         ButterKnife.bind(this);
+
+        // SqLite database handler
+        db = new SQLiteHandler(getApplicationContext());
+
+        // session manager
+        session = new SessionManager(getApplicationContext());
+
+        if (!session.isLoggedIn()) {
+            logoutUser();
+        }
 
         initToolbar();
 
@@ -113,6 +126,21 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.main_container, fragment);
 
         transaction.commit();
+    }
+
+    /**
+     * Logging out the user. Will set isLoggedIn flag to false in shared
+     * preferences Clears the user data from sqlite users table
+     */
+    private void logoutUser() {
+        session.setLogin(false);
+
+        db.deleteUsers();
+
+        // Launching the login activity
+        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
 }
