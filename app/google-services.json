@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "370314072682",
+    "firebase_url": "https://rosterlive-75f7c.firebaseio.com",
+    "project_id": "rosterlive-75f7c",
+    "storage_bucket": "rosterlive-75f7c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370314072682:android:752b2e7cdc7059ed",
+        "android_client_info": {
+          "package_name": "com.example.android.rosterlive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370314072682-gv2eqdq3n88fksvg7l6g9it9b9esblr7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwZ-xETx-lugmrQ-F_JF20kp_ap_bR_-E"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
