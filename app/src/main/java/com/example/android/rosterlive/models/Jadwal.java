@@ -15,7 +15,7 @@ public class Jadwal {
     private String dosen;
     private String sks;
 
-    public Jadwal(String jam, String statusJadwal, String status, String mataKuliah, String ruangan, String kom, String dosen, String sks){
+    public Jadwal(String matkulID, String jam, String statusJadwal, String status, String mataKuliah, String ruangan, String kom, String dosen, String sks) {
         this.jam = jam;
         this.statusJadwal = statusJadwal;
         this.mataKuliah = mataKuliah;

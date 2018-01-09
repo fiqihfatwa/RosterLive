@@ -156,7 +156,7 @@ public class HariFragment extends Fragment {
                 jadwalList.clear();
                 for (JadwalHarianResponse jadwal : hasil){
                     if(Integer.parseInt(jadwal.getTanggal()) == tanggal) {
-                        jadwalList.add(new Jadwal(jadwal.getJamMatkul(), jadwal.getJadwal(), jadwal.getStatus(), jadwal.getMatkulName(), jadwal.getRuangan(), jadwal.getKelas(), jadwal.getKodeDosen(), jadwal.getMatkulId()));
+                        jadwalList.add(new Jadwal(jadwal.getMatkulId(), jadwal.getJamMatkul(), jadwal.getJadwal(), jadwal.getStatus(), jadwal.getMatkulName(), jadwal.getRuangan(), jadwal.getKelas(), jadwal.getKodeDosen(), jadwal.getMatkulId()));
 
                         if(jadwal.getStatus().equals("tidak masuk") || jadwal.getStatus().equals("libur")){
                             rvJadwalHarian.setVisibility(View.GONE);

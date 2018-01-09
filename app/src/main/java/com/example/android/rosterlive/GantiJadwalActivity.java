@@ -148,8 +148,6 @@ public class GantiJadwalActivity extends AppCompatActivity {
                  * Update TextView dengan tanggal yang kita pilih
                  */
                 etTanggal.setText("" + dateFormatter.format(newDate.getTime()));
-                tanggalGanti = etTanggal.getText().toString().trim();
-
             }
 
         }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
@@ -162,6 +160,7 @@ public class GantiJadwalActivity extends AppCompatActivity {
 
     @OnClick(R.id.b_save_jadwal_ganti)
     public void saveJadwalGantiClick() {
+        tanggalGanti = etTanggal.getText().toString();
         Toast.makeText(this, tanggalGanti + " " + jamGanti + " " + ruanganGanti, Toast.LENGTH_SHORT).show();
     }
 }
