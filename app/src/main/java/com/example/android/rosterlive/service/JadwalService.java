@@ -28,10 +28,12 @@ public interface JadwalService {
             @Field("nim") String nim
     );
 
+
     @POST("mahasiswa")
     @FormUrlEncoded
     Call<LoginResponse> dataLogin(
             @Field("username") String username,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("token") String token
     );
 }

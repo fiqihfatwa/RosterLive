@@ -100,6 +100,17 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         return user;
     }
 
+    public boolean cek_user(){
+        String query = "SELECT COUNT(*) as hasil FROM "+ TABLE_USER;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        if(cursor.getCount()>0)
+            return true;
+        else
+            return false;
+    }
+
     /**
      * Re crate database Delete all tables and create them again
      * */
