@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (hasil.getError() == false){
 
-                    // user successfully logged in
+                    // user successfully logged ins
                     // Create login session
                     session.setLogin(true);
 
