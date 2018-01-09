@@ -27,10 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
     @BindView(R.id.bottom_tab_layout)
     TabLayout bottomTabLayout;
+
     private SQLiteHandler db;
     private SessionManager session;
+
     // configure icons
     private int[] imageResId = {
             R.drawable.ic_home_black_24dp,

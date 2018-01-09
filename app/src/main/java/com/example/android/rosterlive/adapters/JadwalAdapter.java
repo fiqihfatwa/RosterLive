@@ -1,10 +1,12 @@
 package com.example.android.rosterlive.adapters;
 
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android.rosterlive.GantiJadwalActivity;
 import com.example.android.rosterlive.R;
 import com.example.android.rosterlive.models.Jadwal;
 import com.example.android.rosterlive.viewholder.JadwalViewHolder;
@@ -32,7 +34,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalViewHolder> {
 
     @Override
     public void onBindViewHolder(JadwalViewHolder holder, int position) {
-        Jadwal data = listJadwal.get(position);
+        final Jadwal data = listJadwal.get(position);
 
         if(data.getStatus()=="ujian"){
             holder.tvStatusJadwal.setText(data.getStatus());
@@ -51,6 +53,15 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalViewHolder> {
         holder.tvKom.setText(data.getKom());
         holder.tvDosen.setText(data.getDosen());
         holder.tvSks.setText(data.getSks());
+
+        holder.bGanti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), GantiJadwalActivity.class);
+                intent.putExtra("ID", data.getMataKuliah());
+                v.getContext().startActivity(intent);
+            }
+        });
 
     }
 

@@ -26,6 +26,17 @@ public class Jadwal {
         this.status = status;
     }
 
+    public Jadwal() {
+        this.jam = jam;
+        this.statusJadwal = statusJadwal;
+        this.mataKuliah = mataKuliah;
+        this.ruangan = ruangan;
+        this.kom = kom;
+        this.dosen = dosen;
+        this.sks = sks;
+        this.status = status;
+    }
+
     public Jadwal(String jam, String mataKuliah, String ruangan, String kom, String dosen, String sks){
         this.jam = jam;
         this.mataKuliah = mataKuliah;

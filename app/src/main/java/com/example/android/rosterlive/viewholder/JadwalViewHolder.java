@@ -2,6 +2,7 @@ package com.example.android.rosterlive.viewholder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.android.rosterlive.R;
@@ -38,6 +39,9 @@ public class JadwalViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tv_sks)
     public TextView tvSks;
+
+    @BindView(R.id.btn_ganti)
+    public Button bGanti;
 
     public JadwalViewHolder(View itemView) {
         super(itemView);
