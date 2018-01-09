@@ -12,6 +12,7 @@ import com.example.android.rosterlive.helper.SQLiteHandler;
 import com.example.android.rosterlive.response.LoginResponse;
 import com.example.android.rosterlive.service.JadwalService;
 import com.example.android.rosterlive.utilities.SessionManager;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
 
@@ -94,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
                 .build();
 
         JadwalService service = retrofit.create(JadwalService.class);
-
-        service.dataLogin(username, password).enqueue(new Callback<LoginResponse>() {
+        String token = FirebaseInstanceId.getInstance().getToken();
+        service.dataLogin(username, password, token).enqueue(new Callback<LoginResponse>() {
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 LoginResponse hasil = response.body();

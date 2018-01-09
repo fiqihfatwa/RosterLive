@@ -32,6 +32,7 @@ public interface JadwalService {
     @FormUrlEncoded
     Call<LoginResponse> dataLogin(
             @Field("username") String username,
-            @Field("password") String password
+            @Field("password") String password,
+            @Field("token") String token
     );
 }
