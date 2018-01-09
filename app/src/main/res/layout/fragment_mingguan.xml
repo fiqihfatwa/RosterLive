@@ -1,0 +1,78 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.android.rosterlive.fragment.MingguanFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Senin"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_senin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selasa"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_selasa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rabu"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_rabu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kamis"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_kamis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jumat"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_jumat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sabtu"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_sabtu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Minggu"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_minggu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

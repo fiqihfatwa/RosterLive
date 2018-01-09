@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/rootview_mingguan"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <TextView
+            android:id="@+id/tv_jam_mingguan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tool:text="09:40 - 12:10"
+            android:textColor="@android:color/black"
+            android:layout_centerVertical="true"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"/>
+
+        <LinearLayout
+            android:id="@+id/kom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text="Kom"/>
+
+            <TextView
+                android:id="@+id/tv_kom_mingguan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tool:text="B"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ruangan"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/kom"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text="Ruangan"/>
+
+            <TextView
+                android:id="@+id/tv_ruangan_mingguan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tool:text="102"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp">
+
+        <LinearLayout
+            android:id="@+id/mata_kuliah"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text="Mata Kuliah"/>
+
+            <TextView
+                android:id="@+id/tv_matkul_mingguan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tool:text="Pemograman Mobile"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/sks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text="SKS"/>
+
+            <TextView
+                android:id="@+id/tv_sks_mingguan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tool:text="3"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/dosen"
+            android:layout_width="64dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/sks"
+            android:layout_marginRight="24dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Caption"
+                android:text="Dosen"/>
+
+            <TextView
+                android:id="@+id/tv_dosen_mingguan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                tool:text="ROM"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
