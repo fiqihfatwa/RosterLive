@@ -18,7 +18,7 @@ import retrofit2.http.POST;
  */
 
 public interface JadwalService {
-    public String baseUrl = "http://192.168.1.101/rosterlive/";
+    public String baseUrl = "http://rosterlive.pdankdisdiksu.com/";
 
     @GET("api.php")
     Call<List<JadwalResponse>> listJadwal();
@@ -38,7 +38,7 @@ public interface JadwalService {
             @Field("token") String token
     );
 
-    @POST("jadwal_ganti")
+    @POST("mahasiswa/jadwalganti")
     @FormUrlEncoded
     Call<GantiJadwalResponse> responseGantiJadwal(
             @Field("matkul_id") String matkul_id,

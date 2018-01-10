@@ -36,6 +36,7 @@ public class MyFirebaseMessagingService extends com.google.firebase.messaging.Fi
                 .setContentText(message)
                 .setSmallIcon(R.mipmap.ic_launcher_round)
                 .setSound(alarmSound)
+                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
                 .setContentIntent(pendingIntent);
 
         NotificationManager manager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);

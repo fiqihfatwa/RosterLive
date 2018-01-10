@@ -40,11 +40,13 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalViewHolder> {
             holder.tvStatusJadwal.setText(data.getStatus());
         }else{
             holder.tvStatusJadwal.setText(data.getStatusJadwal());
-            if(data.getStatusJadwal().equals("diganti")){
-                holder.tvStatusJadwal.setBackgroundResource(R.color.red);
-            }else if(data.getStatusJadwal().equals("pengganti")){
-                holder.tvStatusJadwal.setBackgroundResource(R.color.orange);
-            }
+           if(data.getStatusJadwal().equalsIgnoreCase("diganti")){
+              holder.tvStatusJadwal.setBackgroundResource(R.color.red);
+              holder.bGanti.setVisibility(View.GONE);
+          }else if(data.getStatusJadwal().equalsIgnoreCase("pengganti")){
+               holder.tvStatusJadwal.setBackgroundResource(R.color.orange);
+               holder.bGanti.setVisibility(View.GONE);
+          }
         }
         holder.tvJam.setText(data.getJam());
         holder.tvStatusJadwal.setText(data.getStatusJadwal());
@@ -62,6 +64,7 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalViewHolder> {
                 intent.putExtra("KOM", data.getKom());
                 intent.putExtra("TANGGAL", data.getTanggal());
                 v.getContext().startActivity(intent);
+
             }
         });
 

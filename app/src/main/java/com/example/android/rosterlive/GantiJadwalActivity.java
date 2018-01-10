@@ -3,8 +3,10 @@ package com.example.android.rosterlive;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.rosterlive.fragment.HomeFragment;
 import com.example.android.rosterlive.helper.SQLiteHandler;
 import com.example.android.rosterlive.response.GantiJadwalResponse;
 import com.example.android.rosterlive.service.JadwalService;
@@ -191,7 +194,7 @@ public class GantiJadwalActivity extends AppCompatActivity {
     @OnClick(R.id.b_save_jadwal_ganti)
     public void saveJadwalGantiClick() {
         tanggalGanti = etTanggal.getText().toString();
-        Toast.makeText(this, tanggalGanti + " " + jamGanti + " " + ruanganGanti, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, tanggalGanti + " " + jamGanti + " " + ruanganGanti, Toast.LENGTH_SHORT).show();
 
         progressDialog.show();
 
@@ -206,22 +209,22 @@ public class GantiJadwalActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<GantiJadwalResponse> call, Response<GantiJadwalResponse> response) {
                 GantiJadwalResponse hasil = response.body();
+                Log.d("GantiJadwal", hasil.getMessage());
 
-                Toast.makeText(GantiJadwalActivity.this, hasil.getMessage(), Toast.LENGTH_SHORT).show();
-
-                progressDialog.dismiss();
-
-                if (hasil.getError() == false) {
-                    GantiJadwalActivity.this.finish();
+                if(!hasil.getError()) {
+                  finish();
                 }
+                progressDialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<GantiJadwalResponse> call, Throwable t) {
-                Toast.makeText(GantiJadwalActivity.this, "Gagal Menyimpan", Toast.LENGTH_SHORT).show();
-
+                Log.d("GantiJadwal",t.getMessage()+ " "+ t.getLocalizedMessage());
+                Toast.makeText(GantiJadwalActivity.this, "Gagal Mengganti Jadwal", Toast.LENGTH_SHORT).show();
                 progressDialog.dismiss();
             }
         });
+
+
     }
 }

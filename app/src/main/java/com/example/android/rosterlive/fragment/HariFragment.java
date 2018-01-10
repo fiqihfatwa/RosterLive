@@ -2,6 +2,7 @@ package com.example.android.rosterlive.fragment;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.rosterlive.R;
 import com.example.android.rosterlive.adapters.JadwalAdapter;
@@ -60,7 +62,7 @@ public class HariFragment extends Fragment {
 
     private String hari;
     private int tanggal;
-
+    View view;
     private SQLiteHandler db;
     private SessionManager session;
 
@@ -75,10 +77,20 @@ public class HariFragment extends Fragment {
 
 
     @Override
+    public void onResume() {
+        super.onResume();
+        loadData(view);
+
+    }
+
+
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_hari, container, false);
+        this.view = view;
         ButterKnife.bind(this, view);
 
         swipeRefreshJadwal.setColorSchemeColors(red,yellow,green);
@@ -158,15 +170,19 @@ public class HariFragment extends Fragment {
                     if(Integer.parseInt(jadwal.getTanggal()) == tanggal) {
                         jadwalList.add(new Jadwal(jadwal.getMatkulId(), jadwal.getJamMatkul(), jadwal.getJadwal(), jadwal.getStatus(), jadwal.getMatkulName(), jadwal.getRuangan(), jadwal.getKelas(), jadwal.getKodeDosen(), jadwal.getSks(), jadwal.getDate(), jadwal.getMhsPengganti()));
 
-                        if(jadwal.getStatus().equals("tidak masuk") || jadwal.getStatus().equals("libur")){
+                        if(jadwal.getStatus().equals("tidak masuk")){
                             rvJadwalHarian.setVisibility(View.GONE);
                             tvStatusHari.setText("Tidak Ada Kelas Hari Ini");
+                        }else if(jadwal.getStatus().equals("libur")){
+                            rvJadwalHarian.setVisibility(View.GONE);
+                            tvStatusHari.setText("Hari Libur");
                         }
                     }
                 }
 
                 adapter.notifyDataSetChanged();
                 swipeRefreshJadwal.setRefreshing(false);
+
             }
 
             @Override
