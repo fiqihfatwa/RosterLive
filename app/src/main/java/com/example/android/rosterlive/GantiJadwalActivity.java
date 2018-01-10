@@ -1,6 +1,7 @@
 package com.example.android.rosterlive;
 
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,15 +14,25 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.android.rosterlive.helper.SQLiteHandler;
+import com.example.android.rosterlive.response.GantiJadwalResponse;
+import com.example.android.rosterlive.service.JadwalService;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class GantiJadwalActivity extends AppCompatActivity {
 
@@ -40,8 +51,11 @@ public class GantiJadwalActivity extends AppCompatActivity {
 
     @BindView(R.id.b_save_jadwal_ganti)
     Button bSaveJadwalGanti;
+
     List<String> listJam, listRuangan;
-    String tanggalGanti, jamGanti, ruanganGanti;
+    String matkulID, kom, tanggalSebelum, tanggalGanti, jamGanti, ruanganGanti, mhsPengganti;
+    ProgressDialog progressDialog;
+    private SQLiteHandler db;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
 
@@ -54,6 +68,17 @@ public class GantiJadwalActivity extends AppCompatActivity {
         this.setSupportActionBar(toolbarJadwalGanti);
         this.setTitle("Ganti Jadwal");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        // SqLite database handler
+        db = new SQLiteHandler(getApplicationContext());
+
+        // Fetching user details from sqlite
+        HashMap<String, String> user = db.getUserDetails();
+
+        mhsPengganti = user.get("username");
+        matkulID = getIntent().getStringExtra("MATKULID");
+        kom = getIntent().getStringExtra("KOM");
+        tanggalSebelum = getIntent().getStringExtra("TANGGAL");
 
         Calendar calendar = Calendar.getInstance();
         dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
@@ -88,12 +113,12 @@ public class GantiJadwalActivity extends AppCompatActivity {
         });
 
         listRuangan = new ArrayList<>();
-        listRuangan.add("101");
-        listRuangan.add("102");
-        listRuangan.add("103");
-        listRuangan.add("104");
-        listRuangan.add("105");
-        listRuangan.add("106");
+        listRuangan.add("TI101");
+        listRuangan.add("TI102");
+        listRuangan.add("TI103");
+        listRuangan.add("TI104");
+        listRuangan.add("TI105");
+        listRuangan.add("TI106");
 
         ArrayAdapter<String> ruanganAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listRuangan);
         ruanganAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -110,6 +135,11 @@ public class GantiJadwalActivity extends AppCompatActivity {
 
             }
         });
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Mohon menunggu");
+        progressDialog.setCancelable(false);
+        progressDialog.setCanceledOnTouchOutside(false);
     }
 
 
@@ -162,5 +192,36 @@ public class GantiJadwalActivity extends AppCompatActivity {
     public void saveJadwalGantiClick() {
         tanggalGanti = etTanggal.getText().toString();
         Toast.makeText(this, tanggalGanti + " " + jamGanti + " " + ruanganGanti, Toast.LENGTH_SHORT).show();
+
+        progressDialog.show();
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(JadwalService.baseUrl)
+                .addConverterFactory(JacksonConverterFactory.create())
+                .build();
+
+        JadwalService service = retrofit.create(JadwalService.class);
+
+        service.responseGantiJadwal(matkulID, kom, ruanganGanti, tanggalSebelum, tanggalGanti, jamGanti, mhsPengganti).enqueue(new Callback<GantiJadwalResponse>() {
+            @Override
+            public void onResponse(Call<GantiJadwalResponse> call, Response<GantiJadwalResponse> response) {
+                GantiJadwalResponse hasil = response.body();
+
+                Toast.makeText(GantiJadwalActivity.this, hasil.getMessage(), Toast.LENGTH_SHORT).show();
+
+                progressDialog.dismiss();
+
+                if (hasil.getError() == false) {
+                    GantiJadwalActivity.this.finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GantiJadwalResponse> call, Throwable t) {
+                Toast.makeText(GantiJadwalActivity.this, "Gagal Menyimpan", Toast.LENGTH_SHORT).show();
+
+                progressDialog.dismiss();
+            }
+        });
     }
 }

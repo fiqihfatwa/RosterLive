@@ -14,8 +14,11 @@ public class Jadwal {
     private String kom;
     private String dosen;
     private String sks;
+    private String matkulID;
+    private String tanggal;
+    private String mhsPengganti;
 
-    public Jadwal(String matkulID, String jam, String statusJadwal, String status, String mataKuliah, String ruangan, String kom, String dosen, String sks) {
+    public Jadwal(String matkulID, String jam, String statusJadwal, String status, String mataKuliah, String ruangan, String kom, String dosen, String sks, String tanggal, String mhsPengganti) {
         this.jam = jam;
         this.statusJadwal = statusJadwal;
         this.mataKuliah = mataKuliah;
@@ -24,6 +27,9 @@ public class Jadwal {
         this.dosen = dosen;
         this.sks = sks;
         this.status = status;
+        this.matkulID = matkulID;
+        this.tanggal = tanggal;
+        this.mhsPengganti = mhsPengganti;
     }
 
     public Jadwal() {
@@ -103,5 +109,21 @@ public class Jadwal {
 
     public void setSks(String sks) {
         this.sks = sks;
+    }
+
+    public String getMatkulID() {
+        return matkulID;
+    }
+
+    public void setMatkulID(String matkulID) {
+        this.matkulID = matkulID;
+    }
+
+    public String getTanggal() {
+        return tanggal;
+    }
+
+    public void setTanggal(String tanggal) {
+        this.tanggal = tanggal;
     }
 }

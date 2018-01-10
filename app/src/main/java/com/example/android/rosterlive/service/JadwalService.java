@@ -1,5 +1,6 @@
 package com.example.android.rosterlive.service;
 
+import com.example.android.rosterlive.response.GantiJadwalResponse;
 import com.example.android.rosterlive.response.JadwalHarianResponse;
 import com.example.android.rosterlive.response.JadwalResponse;
 import com.example.android.rosterlive.response.LoginResponse;
@@ -17,7 +18,7 @@ import retrofit2.http.POST;
  */
 
 public interface JadwalService {
-    public String baseUrl = "http://rosterlive.pdankdisdiksu.com/";
+    public String baseUrl = "http://192.168.1.101/rosterlive/";
 
     @GET("api.php")
     Call<List<JadwalResponse>> listJadwal();
@@ -35,5 +36,17 @@ public interface JadwalService {
             @Field("username") String username,
             @Field("password") String password,
             @Field("token") String token
+    );
+
+    @POST("jadwal_ganti")
+    @FormUrlEncoded
+    Call<GantiJadwalResponse> responseGantiJadwal(
+            @Field("matkul_id") String matkul_id,
+            @Field("kom") String kom,
+            @Field("ruangan") String ruangan,
+            @Field("tgl_sebelum") String tgl_sebelum,
+            @Field("tgl_setelah") String tgl_setelah,
+            @Field("jam") String jam,
+            @Field("nim") String nim
     );
 }

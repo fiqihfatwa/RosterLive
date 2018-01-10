@@ -58,7 +58,9 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), GantiJadwalActivity.class);
-                intent.putExtra("ID", data.getMataKuliah());
+                intent.putExtra("MATKULID", data.getMatkulID());
+                intent.putExtra("KOM", data.getKom());
+                intent.putExtra("TANGGAL", data.getTanggal());
                 v.getContext().startActivity(intent);
             }
         });
