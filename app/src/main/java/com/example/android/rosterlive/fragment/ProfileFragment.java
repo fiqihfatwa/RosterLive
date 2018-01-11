@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+
 import com.example.android.rosterlive.LoginActivity;
 import com.example.android.rosterlive.R;
 import com.example.android.rosterlive.helper.SQLiteHandler;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,6 +39,9 @@ public class ProfileFragment extends Fragment {
 
     @BindView(R.id.b_logout)
     Button bLogout;
+
+    @BindView(R.id.profil_image)
+    CircleImageView imgProfile;
 
     private SQLiteHandler db;
     private SessionManager session;
@@ -67,6 +72,7 @@ public class ProfileFragment extends Fragment {
         tvNim.setText(user.get("username"));
         tvName.setText(user.get("name"));
         tvJurusan.setText(user.get("jurusan"));
+
         // Inflate the layout for this fragment
         return view;
     }
