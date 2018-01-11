@@ -35,17 +35,23 @@ public class JadwalAdapter extends RecyclerView.Adapter<JadwalViewHolder> {
     @Override
     public void onBindViewHolder(JadwalViewHolder holder, int position) {
         final Jadwal data = listJadwal.get(position);
-
+        holder.tvPengganti.setVisibility(View.GONE);
+        holder.tvPengganti_1.setVisibility(View.GONE);
         if(data.getStatus()=="ujian"){
             holder.tvStatusJadwal.setText(data.getStatus());
         }else{
             holder.tvStatusJadwal.setText(data.getStatusJadwal());
+            holder.tvPengganti.setText(data.getMhsPengganti());
            if(data.getStatusJadwal().equalsIgnoreCase("diganti")){
               holder.tvStatusJadwal.setBackgroundResource(R.color.red);
               holder.bGanti.setVisibility(View.GONE);
+              holder.tvPengganti.setVisibility(View.VISIBLE);
+               holder.tvPengganti_1.setVisibility(View.VISIBLE);
           }else if(data.getStatusJadwal().equalsIgnoreCase("pengganti")){
                holder.tvStatusJadwal.setBackgroundResource(R.color.orange);
                holder.bGanti.setVisibility(View.GONE);
+               holder.tvPengganti.setVisibility(View.VISIBLE);
+               holder.tvPengganti_1.setVisibility(View.VISIBLE);
           }
         }
         holder.tvJam.setText(data.getJam());

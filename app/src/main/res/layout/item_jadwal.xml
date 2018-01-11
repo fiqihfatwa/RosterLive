@@ -126,6 +126,28 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:id="@+id/pengganti"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_pengganti_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mhs Pengganti"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Caption" />
+
+                    <TextView
+                        android:id="@+id/tv_pengganti"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Bambang"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/sks"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

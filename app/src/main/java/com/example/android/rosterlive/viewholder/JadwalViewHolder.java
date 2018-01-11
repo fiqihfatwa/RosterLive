@@ -43,6 +43,12 @@ public class JadwalViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.btn_ganti)
     public Button bGanti;
 
+    @BindView(R.id.tv_pengganti)
+    public  TextView tvPengganti;
+
+    @BindView(R.id.tv_pengganti_1)
+    public  TextView tvPengganti_1;
+
     public JadwalViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);

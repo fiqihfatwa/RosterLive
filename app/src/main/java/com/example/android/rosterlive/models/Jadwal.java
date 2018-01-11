@@ -55,6 +55,10 @@ public class Jadwal {
     public  String getStatus(){return status;}
     public void setStatus(String status){ this.status = status;}
 
+    public String getMhsPengganti() {return mhsPengganti;}
+
+    void setMhsPengganti(String mhsPengganti){this.mhsPengganti=mhsPengganti;}
+
     public String getJam() {
         return jam;
     }
