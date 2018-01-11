@@ -2,6 +2,7 @@ package com.example.android.rosterlive.service;
 
 import com.example.android.rosterlive.response.GantiJadwalResponse;
 import com.example.android.rosterlive.response.JadwalHarianResponse;
+import com.example.android.rosterlive.response.JadwalMigguanResponse;
 import com.example.android.rosterlive.response.JadwalResponse;
 import com.example.android.rosterlive.response.LoginResponse;
 
@@ -36,6 +37,12 @@ public interface JadwalService {
             @Field("username") String username,
             @Field("password") String password,
             @Field("token") String token
+    );
+
+    @POST("mahasiswa/mingguan")
+    @FormUrlEncoded
+    Call<List<JadwalMigguanResponse>> jadwalMingguan(
+            @Field("nim") String nim
     );
 
     @POST("mahasiswa/jadwalganti")
