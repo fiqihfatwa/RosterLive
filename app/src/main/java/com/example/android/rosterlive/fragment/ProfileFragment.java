@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-
+import com.bumptech.glide.Glide;
 import com.example.android.rosterlive.LoginActivity;
 import com.example.android.rosterlive.R;
 import com.example.android.rosterlive.helper.SQLiteHandler;
@@ -72,6 +72,13 @@ public class ProfileFragment extends Fragment {
         tvNim.setText(user.get("username"));
         tvName.setText(user.get("name"));
         tvJurusan.setText(user.get("jurusan"));
+
+        String username = user.get("username");
+
+        String url_image = "https://portal.usu.ac.id/photos/" + username + ".jpg";
+        Glide.with(view.getContext())
+                .load(url_image)
+                .into(imgProfile);
 
         // Inflate the layout for this fragment
         return view;

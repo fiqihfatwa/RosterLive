@@ -2,7 +2,7 @@ package com.example.android.rosterlive.service;
 
 import com.example.android.rosterlive.response.GantiJadwalResponse;
 import com.example.android.rosterlive.response.JadwalHarianResponse;
-import com.example.android.rosterlive.response.JadwalMigguanResponse;
+import com.example.android.rosterlive.response.JadwalMingguanResponse;
 import com.example.android.rosterlive.response.JadwalResponse;
 import com.example.android.rosterlive.response.LoginResponse;
 
@@ -14,12 +14,14 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
+//import com.example.android.rosterlive.response.JadwalMigguanResponse;
+
 /**
  * Created by fiqh on 14/12/17.
  */
 
 public interface JadwalService {
-    public String baseUrl = "http://rosterlive.pdankdisdiksu.com/";
+    public String baseUrl = "http://192.168.1.103/rosterlive/";
 
     @GET("api.php")
     Call<List<JadwalResponse>> listJadwal();
@@ -41,7 +43,7 @@ public interface JadwalService {
 
     @POST("mahasiswa/mingguan")
     @FormUrlEncoded
-    Call<List<JadwalMigguanResponse>> jadwalMingguan(
+    Call<List<JadwalMingguanResponse>> jadwalMingguan(
             @Field("nim") String nim
     );
 
